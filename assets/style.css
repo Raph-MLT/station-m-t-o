@@ -23,6 +23,19 @@ body {
   text-align: center;
 }
 
+.echelle {
+  position: relative;
+  height: 8px;
+  background: #dddddd;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  height: 8px;
+  background: #e67e22;
+}
+
 .carte h2 {
   font-size: 1rem;
   margin: 0;

@@ -13,4 +13,5 @@ type VillesPage struct {
 type MeteoPage struct {
 	Commune Commune
 	Days    []Day
+	MapURL  string
 }

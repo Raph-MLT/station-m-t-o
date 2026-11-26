@@ -14,8 +14,10 @@ type Daily struct {
 }
 
 type Day struct {
-	Date time.Time
-	Min  float64
-	Max  float64
-	Code int
+	Date     time.Time
+	Min      float64
+	Max      float64
+	Code     int
+	BarLeft  float64
+	BarWidth float64
 }

@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
 	"meteo/api"
@@ -19,7 +20,48 @@ func GetDays(commune models.Commune) ([]models.Day, error) {
 	if err != nil {
 		return nil, err
 	}
-	return BuildDays(forecast.Daily)
+
+	days, err := BuildDays(forecast.Daily)
+	if err != nil {
+		return nil, err
+	}
+	AddBars(days)
+	return days, nil
+}
+
+func AddBars(days []models.Day) {
+	if len(days) == 0 {
+		return
+	}
+
+	weekMin := days[0].Min
+	weekMax := days[0].Max
+	for _, day := range days {
+		if day.Min < weekMin {
+			weekMin = day.Min
+		}
+		if day.Max > weekMax {
+			weekMax = day.Max
+		}
+	}
+
+	ecart := weekMax - weekMin
+	if ecart == 0 {
+		ecart = 1
+	}
+
+	for i := range days {
+		days[i].BarLeft = (days[i].Min - weekMin) / ecart * 100
+		days[i].BarWidth = (days[i].Max - days[i].Min) / ecart * 100
+	}
+}
+
+func MapURL(commune models.Commune) string {
+	d := 0.05
+	lon := commune.Centre.Coordinates[0]
+	lat := commune.Centre.Coordinates[1]
+	return fmt.Sprintf("https://www.openstreetmap.org/export/embed.html?bbox=%f,%f,%f,%f&layer=mapnik&marker=%f,%f",
+		lon-d, lat-d, lon+d, lat+d, lat, lon)
 }
 
 func BuildDays(daily models.Daily) ([]models.Day, error) {

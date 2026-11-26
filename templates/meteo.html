@@ -1,11 +1,15 @@
 {{template "head" .}}
 <h1>{{.Commune.Nom}}</h1>
+<iframe src="{{.MapURL}}" width="600" height="300" title="Carte de {{.Commune.Nom}}"></iframe>
 <div class="jours">
 {{range .Days}}
 <div class="carte {{weatherIcon .Code}}">
 <h2>{{frDate .Date}}</h2>
 <p>{{weatherLabel .Code}}</p>
 <p>{{temp .Min}} / {{temp .Max}}</p>
+<div class="echelle">
+<div class="bar" style="left: {{.BarLeft}}%; width: {{.BarWidth}}%"></div>
+</div>
 </div>
 {{end}}
 </div>

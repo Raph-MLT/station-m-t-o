@@ -63,7 +63,12 @@ func Meteo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	helpers.Render(w, http.StatusOK, "meteo.html", models.MeteoPage{Commune: commune, Days: days})
+	page := models.MeteoPage{
+		Commune: commune,
+		Days:    days,
+		MapURL:  services.MapURL(commune),
+	}
+	helpers.Render(w, http.StatusOK, "meteo.html", page)
 }
 
 func NotFound(w http.ResponseWriter, r *http.Request) {
