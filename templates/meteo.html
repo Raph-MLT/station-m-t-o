@@ -1,0 +1,8 @@
+{{template "head" .}}
+<h1>{{.Commune.Nom}}</h1>
+<ul>
+{{range .Days}}
+<li>{{.Date.Format "2006-01-02"}} : min {{.Min}} °C, max {{.Max}} °C, code {{.Code}}</li>
+{{end}}
+</ul>
+{{template "foot" .}}

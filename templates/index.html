@@ -1,0 +1,9 @@
+{{template "head" .}}
+<h1>Météo des 7 prochains jours</h1>
+<form action="/ville" method="get">
+<label for="q">Ville</label>
+<input type="text" id="q" name="q" value="{{.Query}}">
+<button type="submit">Rechercher</button>
+</form>
+{{if .Error}}<p class="erreur">{{.Error}}</p>{{end}}
+{{template "foot" .}}
