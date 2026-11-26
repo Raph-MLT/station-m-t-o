@@ -1,23 +1,18 @@
-{{define "head"}}<!DOCTYPE html>
+{{define "head"}}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Météo</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<header>
-<a href="/">Météo</a>
-</header>
-<main>
+<a href="/">Accueil</a>
 {{end}}
 
-{{define "foot"}}</main>
+{{define "foot"}}
 <footer>
-<p>Données : <a href="https://geo.api.gouv.fr/decoupage-administratif">API Découpage administratif</a>,
-<a href="https://open-meteo.com/">Open-Meteo.com</a> (licence <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>),
-carte © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></p>
+<p>Données : API Découpage administratif, Open-Meteo.com (licence CC BY 4.0), OpenStreetMap</p>
 </footer>
 </body>
 </html>

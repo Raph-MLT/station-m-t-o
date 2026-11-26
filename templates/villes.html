@@ -2,7 +2,7 @@
 <h1>Communes pour « {{.Query}} »</h1>
 <ul>
 {{range .Communes}}
-<li><a href="/meteo?code={{.Code}}">{{.Nom}}</a>{{range .CodesPostaux}} {{.}}{{end}} · {{.Population}} habitants</li>
+<li><a href="/meteo?code={{.Code}}">{{.Nom}}</a> ({{.Code}}) - {{.Population}} habitants</li>
 {{end}}
 </ul>
 {{template "foot" .}}

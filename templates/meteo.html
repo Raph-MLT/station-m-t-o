@@ -1,8 +1,12 @@
 {{template "head" .}}
 <h1>{{.Commune.Nom}}</h1>
-<ul>
+<div class="jours">
 {{range .Days}}
-<li>{{.Date.Format "2006-01-02"}} : min {{.Min}} °C, max {{.Max}} °C, code {{.Code}}</li>
+<div class="carte {{weatherIcon .Code}}">
+<h2>{{frDate .Date}}</h2>
+<p>{{weatherLabel .Code}}</p>
+<p>{{temp .Min}} / {{temp .Max}}</p>
+</div>
 {{end}}
-</ul>
+</div>
 {{template "foot" .}}

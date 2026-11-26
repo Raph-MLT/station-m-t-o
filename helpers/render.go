@@ -10,7 +10,13 @@ import (
 var templates *template.Template
 
 func LoadTemplates() {
-	templates = template.Must(template.ParseGlob("templates/*.html"))
+	funcs := template.FuncMap{
+		"frDate":       FrDate,
+		"temp":         Temp,
+		"weatherLabel": WeatherLabel,
+		"weatherIcon":  WeatherIcon,
+	}
+	templates = template.Must(template.New("").Funcs(funcs).ParseGlob("templates/*.html"))
 }
 
 func Render(w http.ResponseWriter, status int, name string, data any) {

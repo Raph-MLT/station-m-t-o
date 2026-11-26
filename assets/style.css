@@ -8,3 +8,33 @@ body {
 .erreur {
   color: #b00020;
 }
+
+.jours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.carte {
+  width: 120px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.carte h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.degage { background: #fff4c2; }
+.nuageux { background: #e6e9ee; }
+.brouillard { background: #eeeeee; }
+.bruine { background: #e3f0f7; }
+.pluie { background: #cfe3f5; }
+.neige { background: #f4f8fc; }
+.averses { background: #c5dbef; }
+.averses-neige { background: #e8eef7; }
+.orage { background: #ddd3ea; }
+.inconnu { background: #ffffff; }
